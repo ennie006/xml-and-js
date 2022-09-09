@@ -1,0 +1,12 @@
+# Activity 1
+
+```xml
+<?xml version="1.0" encoding="utf-8"?>​
+<myhobbies>​
+  <balling> paint balling </balling>​
+  <name>sharon</name>​
+</myhobbies>
+<myhobbies>
+<reading> art of seduction </reading>
+<name> dozie </name>
+</myhobbies>
