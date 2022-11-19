@@ -1,22 +1,26 @@
 <?xml version="1.0"?>
-<?xml-stylesheet type="text/xsl" href="students.xsl"?>
+<?xml-stylesheet type="text/xsl" href="books.xsl"?>
 <class>
-  <student rollno="393">
-    <firstname>Dinkar</firstname>
-    <lastname>Kad</lastname>
-    <nickname>Dinkar</nickname>
-    <marks>85</marks>
-  </student>
-  <student rollno="493">
-    <firstname>Vaneet</firstname>
-    <lastname>Gupta</lastname>
-    <nickname>Vinni</nickname>
-    <marks>95</marks>
-  </student>
-  <student rollno="593">
-    <firstname>Jasvir</firstname>
-    <lastname>Singh</lastname>
-    <nickname>Jazz</nickname>
-    <marks>90</marks>
-  </student>
+  <books price="30.0">
+    <category>cooking</category>
+    <author>Giada De Laurentiis</author>
+    <title>Everyday italian</title>
+    <year>2005</year>
+  </books>
+  <books price ="29.99">
+    <category>children</category>
+    <author>J K. Rowling</author>
+    <title>Harry Potter</title>
+    <year>2005</year>
+  </books>
+  <books price="49.9">
+    <category>web</category>
+    <author>James McGovern,
+      Per Bothner,
+      Kurt Cagle,
+      James Linn,
+      Vaidyanathan Nagarajan</author>
+    <title>learning xml</title>
+    <author>Erik T. Ray</author>
+  </books>
 </class>

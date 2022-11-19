@@ -31,10 +31,10 @@
                     </tr>
                     <xsl:for-each select = 'products/product/manufacturer[@id="acme"]'>
                         <tr>
-                            <td><xsl:value-of select='../productName'/></td>
-                            <td><xsl:value-of select='../description'/></td>
-                            <td><xsl:value-of select='../prices/price[1]'/></td>
-                            <td><xsl:value-of select='../prices/price[3]'/></td>
+                          <td><xsl:value-of select='../productName'/></td>
+                          <td><xsl:value-of select='../description'/></td>
+                          <td><xsl:value-of select='../prices/price[1]'/></td>
+                          <td><xsl:value-of select='../prices/price[3]'/></td>
                         </tr>
                     </xsl:for-each>
                 </table>            
