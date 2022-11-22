@@ -1,0 +1,2 @@
+dtd validation; I made of use of the xml validation tool to check the error of structure and vocabulary of an XML document against the grammatical rules of the appropriate XML language.
+If a definition file is not well formed according to the schema, an error will be output into the application, analyzing where the error occurred. 

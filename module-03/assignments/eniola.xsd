@@ -1,56 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="catalog" type="catalogType"/>
+ <xs:complexType name="catalogType">
+  <xs:sequence>
+     <xs:element name="product" type="productType" minOccurs="0" maxOccurs="unbounded"/>
+   </xs:sequence>
+</xs:complexType>
+<xs:complexType name="productType">
+  <xs:sequence>
+    <xs:element name="catalog_item"type="catalog_itemType" minOccurs="0" maxOccurs="unbounded"/>
+  </xs:sequence>
+   <xs:attribute name="product_id"   type="xs:string"/>
+   <xs:attribute name="description"  type="xs:string"/>
+   <xs:attribue name="product_image" type="xs:string"/>
+</xs:complexType>
 
+<xs:complexType name="catalog_itemType">
+   <xs:sequence>
+    <xs:element name="item_number"  type="xs:string"/>
+    <xs:element name="price"        type="xs:string"/>
+    <xs:element name="size"         type="xs:string"/>
+   </xs:sequence>
+   <xs:attibute name="gender" type="xs:string"/>
+</xs:complexType>
 
-[
-<!ELEMENT catalog (product+)>
-<!ELEMENT product (catalog_item+)>
-<!ATTLIST product product_id ID #REQUIRED>
-<!ATTLIST product description CDATA #REQUIRED>
-<!ATTLIST product product_image CDATA #REQUIRED>
-<!ELEMENT catalog_item(item_number,price,size+)>
-<!ATTLIST catalog_item gender CDATA #REQUIRED>
-<!ELEMENT item_number (#PCDATA)>
-<!ELEMENT price (#PCDATA)>
-<!ELEMENT size (color_swatch+)>
-<!ELEMENT size description CDATA #REQUIRED>
-<!ATTLIST color_swatch(#PCDATA)>
-<!ATTLIST color_swatch image CDATA #REQUIRED
-]
-<catalog>
-  <product product_id="e4892f6a-7cce-11ec-90d6-0242ac120003" description="Cardigan Sweater" product_image="cardigan.jpg">
-    <catalog_item gender="Men">
-      <item_number>QWZ5671</item_number>
-      <price>39.95</price>
-      <size description="Medium">
-        <color_swatch image="red_cardigan.jpg">Red</color_swatch>
-        <color_swatch image="burgundy_cardigan.jpg">Burgundy</color_swatch>
-      </size>
-      <size description="Large">
-        <color_swatch image="red_cardigan.jpg">Red</color_swatch>
-        <color_swatch image="burgundy_cardigan.jpg">Burgundy</color_swatch>
-      </size>
-    </catalog_item>
-    <catalog_item gender="Women">
-      <item_number>RRX9856</item_number>
-      <price>42.50</price>
-      <size description="Small">
-        <color_swatch image="red_cardigan.jpg">Red</color_swatch>
-        <color_swatch image="navy_cardigan.jpg">Navy</color_swatch>
-        <color_swatch image="burgundy_cardigan.jpg">Burgundy</color_swatch>
-      </size>
-      <size description="Medium">
-        <color_swatch image="red_cardigan.jpg">Red</color_swatch>
-        <color_swatch image="navy_cardigan.jpg">Navy</color_swatch>
-        <color_swatch image="burgundy_cardigan.jpg">Burgundy</color_swatch>
-        <color_swatch image="black_cardigan.jpg">Black</color_swatch>
-      </size>
-      <size description="Large">
-        <color_swatch image="navy_cardigan.jpg">Navy</color_swatch>
-        <color_swatch image="black_cardigan.jpg">Black</color_swatch>
-      </size>
-      <size description="Extra Large">
-        <color_swatch image="burgundy_cardigan.jpg">Burgundy</color_swatch>
-        <color_swatch image="black_cardigan.jpg">Black</color_swatch>
-      </size>
-    </catalog_item>
-  </product>
-</catalog>
+<xs:complexType name= "sizeType">
+      <xs:sequence>
+       <xs:element name="color_swatch" type="color_swatchType" minOccurs="0" maxOccurs= "unbounded"/>
+     </xs:sequence>
+       <xs:attribute name="description" type="xs:string"/>
+<xs:complexType>
+
+<xs:complexType name ="color_swatchType">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+      </xs:extension>
+    </xs:simpleContent>
+    </xs:complexType>
+    </xs:schema>

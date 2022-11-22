@@ -7,7 +7,7 @@
         <title>Documents</title>
     </head>
     <body>
-        <ol id="people"></ol>
+        <ol id="cards"></ol>
         <script>
           const xhttp = new XMLHttpRequest();
           xhttp.onreadystatechange = function () {
@@ -16,7 +16,7 @@
               displayData(this.responseXML);
             }
           };
-          xhttp.open("GET", "people.xml", true);
+          xhttp.open("GET", "cards.xml", true);
           xhttp.send();
 
         function stringToNode(html) {
@@ -26,7 +26,7 @@
         return template.content.firstChild;
         }
 
-        function createpeople(people) {
+        function createpeople(cards) {
         const content = `<li>
         <article>
         <p>${people.email}</p>
@@ -34,7 +34,7 @@
          <h2>${people.last_name}</h2>
           <h3>${people.gender}</h3>
         <div>
-       ${people.ip_address}  ${people.id}
+       ${people.ip_address}  ${people.id}c
         </div>
        </article>
        </li>`;

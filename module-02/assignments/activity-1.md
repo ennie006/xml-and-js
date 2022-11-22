@@ -16,7 +16,7 @@ Design single xml file to store all the following business cards
 ## Kelcey Surman
 
 - +1 (249) 926-7376 (home)
-- +1 (208) 363-6588 (work)
+- +1 (249) 926-7376 (home)
 - +1 (982) 536-6860 (mobile)
 - ksurman1@usnews.com
 
