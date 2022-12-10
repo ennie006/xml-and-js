@@ -1,5 +1,8 @@
 const clientId = `e25ffcda62f84c5cb9ee8491dd5aaa26`;
-const clientSecret ='024c020899ae48b9a528908acfbd131c';
+const clientSecret = '024c020899ae48b9a528908acfbd131c';
+
+
+let _data = [];
 
 const getToken = async () => {
   const result = await fetch("https://accounts.spotify.com/api/token", {
@@ -40,15 +43,37 @@ const getPlaylistByGenre = async (token, genreId) => {
   );
 
   const data = await result.json();
-  return data.playlists.items;
+  return data.playlists ? data.playlists.items : [];
 };
 
 const loadGenres = async () => {
   const token = await getToken();
   const genres = await getGenres(token);
+
+  _data = await Promise.all(
+    genres.map(async (genre) => {
+      const playlists = await getPlaylistByGenre(token, genre.id);
+
+      return { ...genre, playlists };
+    })
+  );
+};
+
+const renderGenres = (filterTerm) => {
+  let source = _data;
+
+  if (filterTerm) {
+    console.log(filterTerm);
+    const term = filterTerm.toLowerCase();
+    source = source.filter(({ name }) => {
+      console.log(name.toLowerCase().includes(term));
+      return name.toLowerCase().includes(term);
+    });
+  }
+
   const list = document.getElementById(`genres`);
-  genres.map(async ({ name, id, icons: [icon], href }) => {
-    const playlists = await getPlaylistByGenre(token, id);
+
+  const html = source.reduce((acc, { name, icons: [icon], playlists }) => {
     const playlistsList = playlists
       .map(
         ({ name, external_urls: { spotify }, images: [image] }) => `
@@ -61,7 +86,9 @@ const loadGenres = async () => {
       .join(``);
 
     if (playlists) {
-      const html = `
+      return (
+        acc +
+        `
       <article class="genre-card">
         <img src="${icon.url}" width="${icon.width}" height="${icon.height}" alt="${name}"/>
         <div>
@@ -70,11 +97,20 @@ const loadGenres = async () => {
             ${playlistsList}
           </ol>
         </div>
-      </article>`;
-
-      list.insertAdjacentHTML("beforeend", html);
+      </article>`
+      );
     }
-  });
+  }, ``);
+
+  list.innerHTML = html;
 };
 
-loadGenres();
+loadGenres().then(renderGenres);
+
+const onSubmit = (event) => {
+  event.preventDefault();
+
+  const term = event.target.term.value;
+
+  renderGenres(term);
+};
